@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>entry</key>
+	<dict>
+		<key>bundle</key>
+		<string>PixelShiftPrefs</string>
+		<key>cell</key>
+		<string>PSListItemCell</string>
+		<key>icon</key>
+		<string>PixelShiftIcon</string>
+		<key>label</key>
+		<string>PixelShift</string>
+	</dict>
+	<key>gesture</key>
+	<string>none</string>
+</dict>
+</plist>
