@@ -1,0 +1,10 @@
+Package: com.yourname.pixelshift
+Name: PixelShift
+Version: 1.0.0
+Architecture: iphoneos-arm64
+Description: Periodic pixel-shifting for OLED iPhones to help prevent burn-in
+Maintainer: Your Name
+Author: Your Name
+Section: Tweaks
+Depends: firmware (>= 15.0), mobilesubstrate | com.opa334.trollstorehelper, preferenceloader
+Homepage: https://example.com
