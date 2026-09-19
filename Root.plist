@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>PreferenceSpecifiers</key>
+	<array>
+		<dict>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+			<key>Title</key>
+			<string>PixelShift</string>
+			<key>FooterText</key>
+			<string>Periodically nudges the status bar and dock by a couple of pixels to help prevent OLED burn-in. Changes apply after respringing.</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSSwitchCell</string>
+			<key>Title</key>
+			<string>Enabled</string>
+			<key>Key</key>
+			<string>enabled</string>
+			<key>DefaultValue</key>
+			<false/>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSSliderCell</string>
+			<key>Title</key>
+			<string>Shift Amount (px)</string>
+			<key>Key</key>
+			<string>shiftAmount</string>
+			<key>DefaultValue</key>
+			<real>2.0</real>
+			<key>MinimumValue</key>
+			<real>0.5</real>
+			<key>MaximumValue</key>
+			<real>4.0</real>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSSliderCell</string>
+			<key>Title</key>
+			<string>Interval (seconds)</string>
+			<key>Key</key>
+			<string>shiftInterval</string>
+			<key>DefaultValue</key>
+			<real>120.0</real>
+			<key>MinimumValue</key>
+			<real>15.0</real>
+			<key>MaximumValue</key>
+			<real>600.0</real>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+			<key>FooterText</key>
+			<string>Tip: pure black backgrounds are already fully "off" pixels on OLED displays — using Dark Mode saves more battery and reduces burn-in risk than shifting alone.</string>
+		</dict>
+	</array>
+	<key>Title</key>
+	<string>PixelShift</string>
+</dict>
+</plist>
