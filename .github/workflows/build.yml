@@ -1,0 +1,51 @@
+name: Build PixelShift
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch: {}
+
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install build dependencies
+        run: brew install make ldid
+
+      - name: Put GNU make first on PATH
+        run: echo "$(brew --prefix make)/libexec/gnubin" >> "$GITHUB_PATH"
+
+      - name: Set THEOS env var
+        run: echo "THEOS=${{ github.workspace }}/theos" >> "$GITHUB_ENV"
+
+      - name: Cache Theos + SDK
+        id: cache-theos
+        uses: actions/cache@v4
+        with:
+          path: theos
+          key: theos-iphoneos16.5-${{ runner.os }}
+
+      - name: Install Theos
+        if: steps.cache-theos.outputs.cache-hit != 'true'
+        run: |
+          git clone --quiet --depth=1 --recursive https://github.com/theos/theos.git "$THEOS"
+
+      - name: Install iOS SDK
+        if: steps.cache-theos.outputs.cache-hit != 'true'
+        run: |
+          curl -fsSL -o iPhoneOS16.5.sdk.tar.xz \
+            https://github.com/theos/sdks/releases/latest/download/iPhoneOS16.5.sdk.tar.xz
+          tar -xf iPhoneOS16.5.sdk.tar.xz -C "$THEOS/sdks"
+          rm iPhoneOS16.5.sdk.tar.xz
+
+      - name: Build package
+        run: make package FINALPACKAGE=1
+
+      - name: Upload .deb artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: PixelShift-deb
+          path: packages/*.deb
